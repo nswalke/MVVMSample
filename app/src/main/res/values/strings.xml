@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Mvvm Sample</string>
+    <string name="age_formatted_string">Age: %1$d</string>
+</resources>

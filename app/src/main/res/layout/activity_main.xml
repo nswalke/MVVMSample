@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="gameViewModel"
+            type="com.viral.nirmal.mvvmsample.viewmodel.GameViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:text="@={gameViewModel.age}"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btn_birthday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="8dp"
+            android:onClick="@{()-> gameViewModel.birthday()}"
+            android:padding="12dp"
+            android:text="Birthday" />
+
+        <Button
+            android:id="@+id/btn_accident"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="8dp"
+            android:onClick="@{() -> gameViewModel.accident()}"
+            android:padding="12dp"
+            android:text="Accident" />
+    </RelativeLayout>
+
+</layout>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="productViewModel"
+            type="com.viral.nirmal.mvvmsample.productpage.viewmodel.ProductViewModel" />
+
+        <variable
+            name="pagerAdapter"
+            type="com.viral.nirmal.mvvmsample.productpage.adapter.ProductDetailsPagerAdapter" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@{productViewModel.productName}"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:gravity="center"
+            android:text="@{productViewModel.productPrice}"
+            android:textSize="14sp" />
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tl_product_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:tabGravity="fill"
+            app:viewPager="@{vpProductDetails}"> <!-- vpProductDetails refers to the id vp_product_details which gets represented in camel case after compiling -->
+
+            <android.support.design.widget.TabItem
+                android:id="@+id/tab_ingredient"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ingredient" />
+
+            <android.support.design.widget.TabItem
+                android:id="@+id/tab_nutrition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nutrition" />
+
+            <android.support.design.widget.TabItem
+                android:id="@+id/tab_review"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reviews" />
+        </android.support.design.widget.TabLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_product_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:pagerAdapter="@{pagerAdapter}" />
+    </LinearLayout>
+</layout>
