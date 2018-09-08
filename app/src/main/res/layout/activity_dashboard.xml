@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="dashboardViewModel"
+            type="com.viral.nirmal.mvvmsample.dashboard.viewmodel.DashboardViewModel" />
+    </data>
+
+    <FrameLayout
+        android:id="@+id/fl_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.design.widget.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.design.widget.CollapsingToolbarLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:contentScrim="@color/colorAccent"
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorAccent"
+                        android:orientation="vertical"
+                        app:layout_collapseMode="parallax">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_dashboard_header_1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="24dp"
+                                android:layout_marginTop="48dp"
+                                android:gravity="center"
+                                android:text="@{dashboardViewModel.dashboardHeader}"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_dashboard_header_2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="48dp"
+                                android:layout_marginTop="24dp"
+                                android:gravity="center"
+                                android:text="@{dashboardViewModel.dashboardHeader}"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </android.support.design.widget.CollapsingToolbarLayout>
+            </android.support.design.widget.AppBarLayout>
+
+            <android.support.v4.widget.SwipeRefreshLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_dashboard_items"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:recyclerAdapter="@{dashboardViewModel.dashboardRecyclerAdapter}"
+                    app:recyclerLayoutManager="@{dashboardViewModel.dashboardRecyclerViewLayoutManager}" />
+
+            </android.support.v4.widget.SwipeRefreshLayout>
+        </android.support.design.widget.CoordinatorLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_progress_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffffff"
+            android:visibility="@{dashboardViewModel.showProgress ? View.VISIBLE : View.GONE}">
+
+            <ProgressBar
+                android:id="@+id/progress"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerInParent="true"
+                android:indeterminate="true" />
+        </RelativeLayout>
+    </FrameLayout>
+</layout>

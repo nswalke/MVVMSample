@@ -2,6 +2,7 @@ package com.viral.nirmal.mvvmsample.di.component;
 
 import android.databinding.DataBindingComponent;
 
+import com.viral.nirmal.mvvmsample.adapter.RecyclerViewBindingAdapter;
 import com.viral.nirmal.mvvmsample.adapter.TabLayoutBindingAdapter;
 import com.viral.nirmal.mvvmsample.adapter.ViewPagerBindingAdapter;
 import com.viral.nirmal.mvvmsample.di.module.BindingAdapterModule;
@@ -17,4 +18,5 @@ public interface MyDataBindingComponent extends DataBindingComponent {
 
     TabLayoutBindingAdapter exposeTabLayoutBindingAdapter();
 
+    RecyclerViewBindingAdapter exposeRecyclerViewBindingAdapter();
 }

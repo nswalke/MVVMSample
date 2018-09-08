@@ -106,7 +106,9 @@ public class CarouselViewModel extends BaseObservable implements CarouselPagerAd
 
     public void onViewHidden() {
         isViewAdded = false;
-        carouselTimer.cancel();
+        if (carouselTimer != null) {
+            carouselTimer.cancel();
+        }
     }
 
     public void destroy() {

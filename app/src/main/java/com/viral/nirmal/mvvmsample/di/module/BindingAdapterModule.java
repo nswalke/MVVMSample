@@ -1,5 +1,6 @@
 package com.viral.nirmal.mvvmsample.di.module;
 
+import com.viral.nirmal.mvvmsample.adapter.RecyclerViewBindingAdapter;
 import com.viral.nirmal.mvvmsample.adapter.TabLayoutBindingAdapter;
 import com.viral.nirmal.mvvmsample.adapter.ViewPagerBindingAdapter;
 import com.viral.nirmal.mvvmsample.di.scope.ApplicationScope;
@@ -18,7 +19,13 @@ public class BindingAdapterModule {
 
     @Provides
     @ApplicationScope
-    public TabLayoutBindingAdapter tabLayoutBindingAdapter(){
+    public TabLayoutBindingAdapter tabLayoutBindingAdapter() {
         return new TabLayoutBindingAdapter();
+    }
+
+    @Provides
+    @ApplicationScope
+    public RecyclerViewBindingAdapter recyclerViewBindingAdapter() {
+        return new RecyclerViewBindingAdapter();
     }
 }
