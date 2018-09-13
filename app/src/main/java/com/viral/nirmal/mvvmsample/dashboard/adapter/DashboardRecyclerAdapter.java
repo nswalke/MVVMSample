@@ -22,30 +22,12 @@ public class DashboardRecyclerAdapter extends RecyclerView.Adapter<DashboardItem
     @NonNull
     @Override
     public DashboardItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new DashboardItemViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_dashboard_item, parent, false));
+        return new DashboardItemViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_dashboard_item, parent, false), new DashboardItemViewModel());
     }
 
     @Override
     public void onBindViewHolder(@NonNull DashboardItemViewHolder holder, int position) {
-        holder.setItemViewModel(new DashboardItemViewModel(titles.get(position)));
-    }
-
-    @Override
-    public void onViewAttachedToWindow(@NonNull DashboardItemViewHolder holder) {
-        super.onViewAttachedToWindow(holder);
-        holder.bind();
-    }
-
-    @Override
-    public void onViewDetachedFromWindow(@NonNull DashboardItemViewHolder holder) {
-        super.onViewDetachedFromWindow(holder);
-        holder.unBind();
-    }
-
-    @Override
-    public boolean onFailedToRecycleView(@NonNull DashboardItemViewHolder holder) {
-        holder.itemView.clearAnimation();
-        return super.onFailedToRecycleView(holder);
+        holder.bind(titles.get(position));
     }
 
     @Override

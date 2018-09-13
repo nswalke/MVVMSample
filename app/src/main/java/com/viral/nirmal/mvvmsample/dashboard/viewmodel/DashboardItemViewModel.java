@@ -8,12 +8,16 @@ public class DashboardItemViewModel extends BaseItemViewModel {
 
     private String title;
 
-    public DashboardItemViewModel(String title) {
-        this.title = title;
+    public DashboardItemViewModel() {
+        this.title = "";
     }
 
     @Bindable
     public String getTitle() {
         return String.valueOf(title);
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

@@ -1,6 +1,7 @@
 package com.viral.nirmal.mvvmsample.dashboard.view;
 
 import android.databinding.DataBindingUtil;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
@@ -9,28 +10,24 @@ import com.viral.nirmal.mvvmsample.databinding.LayoutDashboardItemBinding;
 
 public class DashboardItemViewHolder extends RecyclerView.ViewHolder {
 
-    private LayoutDashboardItemBinding itemBinding = null;
 
-    public DashboardItemViewHolder(View itemView) {
+    private DashboardItemViewModel itemViewModel;
+
+    public DashboardItemViewHolder(View itemView, DashboardItemViewModel itemViewModel) {
         super(itemView);
-        bind();
-    }
-
-    public void bind() {
-        if (itemBinding == null) {
-            itemBinding = DataBindingUtil.bind(itemView);
-        }
-    }
-
-    public void setItemViewModel(DashboardItemViewModel itemViewModel) {
+        this.itemViewModel = itemViewModel;
+        LayoutDashboardItemBinding itemBinding = DataBindingUtil.bind(itemView);
         if (itemBinding != null) {
             itemBinding.setItemViewModel(itemViewModel);
         }
     }
 
-    public void unBind() {
-        if (itemBinding != null) {
-            itemBinding.unbind();
+    public void bind(@NonNull String title) {
+        if (itemViewModel != null) {
+            //update data in the viewModel
+            itemViewModel.setTitle(title);
+            //update the view which is observing this viewModel
+            itemViewModel.notifyChange();
         }
     }
 }
